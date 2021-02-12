@@ -9,8 +9,11 @@
 package io.nayuki.bitcoin.crypto;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
+
+import de.wenzlaff.crypto.Transform;
 
 /**
  * Tests the RIPEMD-160 hash function class.
@@ -187,4 +190,23 @@ public final class Ripemd160Test {
 			assertArrayEquals(Utils.hexToBytes(testCase[0]), Ripemd160.getHash(Utils.asciiToBytes(testCase[1])));
 	}
 
+	@Test
+	public void testOneMillionA() {
+
+		byte[] millionA = getTestMillionenA();
+
+		assertEquals("52783243c1697bdbe16d37f97f68f08325dc1528", Transform.bytesToHex(Ripemd160.getHash(millionA)));
+	}
+
+	private byte[] getTestMillionenA() {
+		int eineMillionen = 1000000;
+		StringBuffer b = new StringBuffer(eineMillionen);
+		for (int i = 0; i < eineMillionen; i++) {
+			b.append('a');
+		}
+		String eingabe = b.toString();
+
+		byte[] asciiToBytes = eingabe.getBytes();
+		return asciiToBytes;
+	}
 }
