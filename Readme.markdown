@@ -1,3 +1,12 @@
+Change on Nayuki's Bitcoin cryptography library 2021 
+====================================================
+
+Create Maven Projekt.
+Delete CPP Code.
+Prepare JUnit 5.
+Prepare JAR
+
+
 Nayuki's Bitcoin cryptography library
 =====================================
 
